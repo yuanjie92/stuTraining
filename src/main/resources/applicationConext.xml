@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <import resource="classpath:connection.xml"/>
+
+    <context:annotation-config/>
+
+    <bean id="studentConvert" class="com.training.convert.impl.StudentConvert"/>
+
+    <bean id="addressConvert" class="com.training.convert.impl.AddressConvert"/>
+
+    <bean id="addressFormConvert2Model" class="com.training.convert.impl.AddressFormConvert2Model"/>
+
+    <bean id="studentConvertForm2Model" class="com.training.convert.impl.StudentConvertForm2Model"/>
+
+    <bean id="userReverseConvert" class="com.training.convert.impl.UserReverseConvert"/>
+
+    <bean id="studentDao" class="com.training.dao.impl.StudentDaoImpl">
+        <property name="commonDao" ref="commonDao"/>
+    </bean>
+
+    <bean id="studentService" class="com.training.service.impl.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"/>
+        <property name="commonService" ref="commonService"/>
+        <property name="studentConvert" ref="studentConvert"/>
+        <property name="addressConvert" ref="addressConvert"/>
+        <property name="convertFrom2model" ref="studentConvertForm2Model"/>
+        <property name="addressFormConvert2Model" ref="addressFormConvert2Model"/>
+    </bean>
+
+    <bean id="areaService" class="com.training.service.impl.AreaServiceImpl">
+        <property name="commonDao" ref="commonDao"/>
+    </bean>
+
+    <bean id="userDao" class="com.training.dao.impl.UserDaoImpl" />
+
+    <bean id="userService" class="com.training.service.impl.UserServiceImpl"/>
+
+
+</beans>
