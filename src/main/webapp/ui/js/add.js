@@ -1,19 +1,15 @@
 $(function () {
     $("#prov").on("change", function () {
-
         var provName = $(this).find("option:selected").text();
         console.log("provName:" + provName);
         $("#provName").val(provName);
-
         var pCode = $(this).val();
         select("city",pCode);
     });
 
     $("#city").on("change", function () {
-
         var cityName = $(this).find("option:selected").text();
         $("#cityName").val(cityName);
-
         var pCode = $(this).val();
         select("area",pCode);
     });
@@ -45,6 +41,7 @@ function select(id,pCode) {
 
 }
 
+/*
 function upload(obj){
     var f=$(obj).val();
     if(f == null || f ==undefined || f == ''){
@@ -95,4 +92,4 @@ function upload(obj){
 
 
 
-}
+}*/
