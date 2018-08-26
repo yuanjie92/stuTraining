@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -21,13 +20,16 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(String name, String password, HttpServletRequest request){
+    public String login(String name, String password, String verifyCode, HttpSession session){
         boolean exist = userService.queryByNameAndPassword(name, password);
         if(!exist){
            return "/login";
         }
-        HttpSession session = request.getSession();
         session.setAttribute("name",name);
+        String verify = (String) session.getAttribute("verifyCode");
+        if(!verify.equalsIgnoreCase(verifyCode)){
+            return "/login";
+        }
 
         return "redirect:student/studentList";
     }

@@ -90,7 +90,7 @@
     </style>
 
     <script type="text/javascript" src="/_ui/js/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="/_ui/js/login.js"></script>
+    <%--<script type="text/javascript" src="/_ui/js/login.js"></script>--%>
 
 <body>
 <div class="tyg-div">
@@ -132,7 +132,7 @@
 </div>
 <div class="tyg-div-denglv">
     <div class="tyg-div-form">
-        <form id="loginForm" action="">
+        <form id="loginForm" action="/login" method="post">
             <h2>登录</h2>
             <p class="tyg-p">欢迎访问 智慧能力</p>
             <div style="margin:5px 0px;">
@@ -142,10 +142,10 @@
                 <input type="password" name="password" id="loginPassword" placeholder="请输入密码..."/>
             </div>
             <div style="margin:5px 0px;">
-                <input type="text" style="width:150px;" placeholder="请输入验证码..."/>
+                <input type="text" name="verifyCode" id="verifyCode" style="width:150px;" placeholder="请输入验证码..."/>
                 <img src="/verifyCode" style="vertical-align:bottom;" alt="验证码"/>
             </div>
-            <button type="button" id="submit">登<span style="width:20px;"></span>录</button>
+            <button type="submit" id="submit">登<span style="width:20px;"></span>录</button>
         </form>
     </div>
 </div>
