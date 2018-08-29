@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "tb_student")
-public class StudentModel {
+public class StudentModel implements Comparable{
 
     private Integer id;
     private String name;
@@ -104,5 +104,29 @@ public class StudentModel {
 
     public Integer getAge() {
         return age;
+    }
+
+    @Override
+    public String toString() {
+        return "StudentModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(!(o instanceof StudentModel)){
+            //throw new Exception("不同对象不能进行比较");
+            return -100;
+        }
+        StudentModel temp = (StudentModel)o;
+        if(this.getId() > temp.getId()){
+            return 1;
+        }
+        if(this.getId() < temp.getId()){
+            return -1;
+        }
+        return 0;
     }
 }
