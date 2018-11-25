@@ -9,6 +9,7 @@ public class UserModel {
 
     private Long id;
     private String name;
+    private String mobile;
     private String password;
     private Date createDate;
     private Date modifyDate;
@@ -62,6 +63,14 @@ public class UserModel {
 
     public void setIsValid(String isValid) {
         this.isValid = isValid;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
     }
 
     @Override

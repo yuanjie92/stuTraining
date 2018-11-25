@@ -148,9 +148,40 @@
             <button type="submit" id="submit">登<span style="width:20px;"></span>录</button>
         </form>
     </div>
+
+    <div class="tyg-div-form2">
+        <form id="smsForm" action="/smsLogin" method="post">
+            <h2>登录</h2>
+            <p class="tyg-p">短信登录</p>
+            <div style="margin:5px 0px;">
+                <input type="text" name="mobile" id="mobile" placeholder="手机号..."/>
+            </div>
+            <div style="margin:5px 0px;">
+                <input type="text" name="smsCode" id="smsCode" placeholder="验证码..."/>
+                <button id="getSmsCode" type="button">获取验证码</button>
+            </div>
+
+            <button type="submit">登<span style="width:20px;"></span>录</button>
+        </form>
+    </div>
 </div>
 
 <script type="text/javascript" src="/_ui/js/com.js"></script>
+
+<script type="text/javascript">
+   $(function(){
+       $("#getSmsCode").on("click",function(){
+           var mobile = $("#mobile").val();
+           $.ajax({
+               url:"/code/smsCode",
+               data:{"mobile":mobile},
+               success:function(result){
+                    alert(result);
+               }
+           });
+   });
+   });
+</script>
 
 </body>
 </html>

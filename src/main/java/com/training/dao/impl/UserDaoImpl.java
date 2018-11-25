@@ -27,4 +27,16 @@ public class UserDaoImpl implements UserDao {
         }
         return userModel;
     }
+
+    @Override
+    public UserModel queryByMobile(String mobile) {
+        UserModel userModel = null;
+        Map<String, Object> map = new HashMap<>();
+        map.put("mobile", mobile);
+        List<UserModel> list = commonDao.getEntitiesByFields(UserModel.class, map);
+        if(!list.isEmpty() && list.size() > 0){
+            userModel = list.get(0);
+        }
+        return userModel;
+    }
 }

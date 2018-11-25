@@ -9,6 +9,10 @@
 
     <context:annotation-config/>
 
+    <context:component-scan base-package="com.training.common.service"/>
+
+    <!--<bean id="redisService" class="com.training.common.service.RedisService"/>-->
+
     <bean id="studentConvert" class="com.training.convert.impl.StudentConvert"/>
 
     <bean id="addressConvert" class="com.training.convert.impl.AddressConvert"/>
@@ -39,6 +43,8 @@
     <bean id="userDao" class="com.training.dao.impl.UserDaoImpl" />
 
     <bean id="userService" class="com.training.service.impl.UserServiceImpl"/>
+
+    <bean id="smsService" class="com.training.service.impl.SMSService"/>
 
 
 </beans>

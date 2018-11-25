@@ -2,16 +2,18 @@ $(function () {
     $("#submit").on("click",function () {
         var name = $("#loginName").val();
         var password = $("#loginPassword").val();
+        var verify = $("#verifyCode").val();
         $.ajax({
             type: "POST",
-            url:"/user/login",
-            data: {"name":name,"password":password},
+            url:"/login",
+            data: {"name":name,"password":password,"verify":verify},
             success: function (flag) {
-                if(flag == "false"){
-                    alert("用户名或密码错误");
-                }else{
-                    window.location.herf = "localhost:8080/student/studentList";
-                }
+                console.info("flag:" + flag);
+                // if(flag == "false"){
+                //     alert("用户名或密码错误");
+                // }else{
+                //     window.location.href = "/student/studentList";
+                // }
             }
         });
     });

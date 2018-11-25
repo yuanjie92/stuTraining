@@ -1,6 +1,7 @@
 package com.training.controller;
 
 import com.training.service.UserService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,5 +34,27 @@ public class LoginController {
 
         return "redirect:student/studentList";
     }
+
+
+
+    @RequestMapping(value = "/smsLogin", method = RequestMethod.POST)
+    public String smsLogin(String mobile, String smsCode, HttpSession session){
+
+        boolean exist = userService.queryByMobile(mobile);
+        if(!exist){
+            return "/login";
+        }
+        String serverSMScode = (String) session.getAttribute(VerifyCodeController.SMSCODE);
+        if(!StringUtils.equals(smsCode,serverSMScode)){
+            return "/login";
+        }
+
+        session.removeAttribute(VerifyCodeController.SMSCODE);
+
+        session.setAttribute("name",mobile);
+
+        return "redirect:student/studentList";
+    }
+
 
 }
